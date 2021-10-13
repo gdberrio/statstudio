@@ -30,3 +30,6 @@ def CountModel(data: pd.DataFrame, data_column: str, samples: int = 10000) -> pm
         trace = pm.sample(samples, tune = 5000, step = step)
 
     return trace
+
+if __name__ == '__main__':
+    print('import complete!')
