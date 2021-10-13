@@ -1,8 +1,14 @@
-from fastapi import FastAPI
+import fastapi
+from statstudio.api import endpoints
 import uvicorn
 
-app = FastAPI()
+api = fastapi.FastAPI()
 
-@app.get('/')
-async def root():
-    return {"message": "Working!"}
+def configure():
+    api.include_router(endpoints.router)
+
+configure()
+
+if __name__ == '__main__':
+    uvicorn.run(api, host = '0.0.0.0')
+
