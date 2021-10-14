@@ -1,4 +1,4 @@
-# StatStudio v0.01
+# StatStudio v0.1.0
 
 ## dependencies
 
