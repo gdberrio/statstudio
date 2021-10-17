@@ -27,7 +27,16 @@ export default {
       var reader = new FileReader();
       reader.readAsText(this.file);
       reader.onload = () => {
-        this.data = reader.result;
+        const content_data = reader.result.split('\n');
+        const header = content_data[0];
+        const cols = header.split(',');
+        content_data.shift();
+        var file_json = {};
+        for (var i = 0; i < cols.length; i++) {
+          file_json[cols[i]] = Object.assign({}, content_data.map(x => x.split(',')[i]));
+          file_json[cols[i]] = Object.assign({}, content_data.map(x => x.split(',')[i]));  
+        }            
+        this.data = JSON.stringify(file_json);
       }
     }
   }

@@ -12,7 +12,6 @@ router = fastapi.APIRouter()
 async def run_count(data=Body(...)):
     data_sales = data["Sales"]
     data_column = 'Sales'
-    print(type(data_sales))
     task = create_task_count.delay(data_sales, data_column)
     return {"task_id": str(task), "status": "Processing"}
 

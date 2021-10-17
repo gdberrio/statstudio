@@ -32,7 +32,7 @@ services:
         - ./statstudio/api:/statstudio/api
       ports:
         - 8000:8000
-      restart: always
+      restart: on-failure
       depends_on:
         - db
 
