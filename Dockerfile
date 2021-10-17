@@ -1,5 +1,6 @@
 FROM python:3.9
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
 WORKDIR /statstudio
 COPY pyproject.toml pyproject.toml
 RUN apt-get update -y

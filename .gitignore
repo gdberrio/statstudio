@@ -1,3 +1,4 @@
 /statstudio/frontend/node_modules/
 .idea/
 __pycache__/
+/workbooks
