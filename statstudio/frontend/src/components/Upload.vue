@@ -15,11 +15,13 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
       file: null,
-      data: null,
+      data: null
     }
   },
   methods: {
@@ -36,8 +38,20 @@ export default {
           file_json[cols[i]] = Object.assign({}, content_data.map(x => x.split(',')[i]));
           file_json[cols[i]] = Object.assign({}, content_data.map(x => x.split(',')[i]));  
         }            
-        this.data = JSON.stringify(file_json);
-      }
+        var data = JSON.stringify(file_json);
+
+        axios.post(
+          'http://127.0.0.1:8000/count_data/predict/',
+          data,
+          {
+            headers: {
+            'Content-Type': 'application/json'
+            },
+          }
+        ).then(response => {
+          console.log(response);
+        });
+      }      
     }
   }
 }

@@ -23,3 +23,7 @@ async def count_result(task_id):
         return JSONResponse(status_code=202, content={'task_id': str(task_id), 'status': 'Processing'})
     result = task.get()
     return {'task_id': task_id, 'status': 'Success', 'result': str(result)}
+
+@router.post('/')
+async def root(data=Body(...)):
+    return {"message": "Working!"}
