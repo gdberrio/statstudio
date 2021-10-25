@@ -12,10 +12,14 @@ def CountModel(data: Dict, data_column: str, samples: int = 10000) -> pm.backend
     :param samples: number of samples to MCMC
     :return: trace with samples
     """
+
+    # Data cleaning and setup
     count_data = np.array(list(data.values())).astype(np.float)
     n_count_data = len(count_data)
 
     with pm.Model() as model:
+
+        # Priors and parameters setup
         alpha = 1.0 / count_data.mean()
 
         lambda_1 = pm.Exponential('lambda_1', alpha)
@@ -28,7 +32,11 @@ def CountModel(data: Dict, data_column: str, samples: int = 10000) -> pm.backend
 
         observation = pm.Poisson('obs', lambda_, observed = count_data)
 
+        # model setup - step selection - should be a parameter in a function?
+
         step = pm.Metropolis()
+
+        # Running the model
 
         trace = pm.sample(samples, tune = 5000, step = step, cores=1)
 
