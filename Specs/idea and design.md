@@ -50,6 +50,18 @@ More details: [Bayesian Workflow](https://arxiv.org/abs/2011.01808)
 
 ## What are the main user stories (happy flows + alternative flows)? 
 
+### Version 0.1
+### As a user I want ...
+1. to upload data
+2. write model
+3. remote execute model
+4. to see the results of the modelling
+5. to see the steps in the workflow
+6. Share the results of the modelling
+7. Export the results of the modelling
+8. Save the model for future use
+
+### Version 1.0
 ### As a user I want ...
 1. to login
 2. to register
@@ -148,20 +160,24 @@ Python3.9-slim image.
 
 ## What are the developmental milestones and in what order? 
 1. Setup enviroments and docker instances
-2. Develop Model Engine
+2. Develop Remote Code execution enviroment
+    a. Model Runner & Worker
+    b. Results visualizer
+    c. Bayesian Workflow Checker
+3. Develop Model Engine
     a. Data Loader
     b. Model Config
     c. Model plugin
     d. Model Runner
     e. Results Exporter
-3. Develop FastAPI Endpoints
+4. Develop FastAPI Endpoints
     a. Handle Users
     b. Data Uploader
     c. Model writer / importer
     d. Model Config
     e. Model Runner
     f. Model data transfer to UI
-4. Develop UI
+5. Develop UI
     a. Login Screen
     b. Data Loader
     c. Model writer / importer
